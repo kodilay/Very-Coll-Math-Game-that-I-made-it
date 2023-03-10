@@ -1,0 +1,64 @@
+using System;
+
+namespace MathGame
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to the Math Game!");
+
+            int score = 0;
+            int attempts = 3;
+
+            while (attempts > 0)
+            {
+                Random rnd = new Random();
+                int num1 = rnd.Next(1, 11);
+                int num2 = rnd.Next(1, 11);
+                string[] operators = { "+", "-", "*", "/" };
+                string op = operators[rnd.Next(operators.Length)];
+
+                Console.Write($"What is {num1} {op} {num2}? ");
+
+                int answer;
+                if (int.TryParse(Console.ReadLine(), out answer))
+                {
+                    int result = 0;
+                    switch (op)
+                    {
+                        case "+":
+                            result = num1 + num2;
+                            break;
+                        case "-":
+                            result = num1 - num2;
+                            break;
+                        case "*":
+                            result = num1 * num2;
+                            break;
+                        case "/":
+                            result = num1 / num2;
+                            break;
+                    }
+
+                    if (answer == result)
+                    {
+                        score++;
+                        Console.WriteLine("Correct! Your score is now " + score);
+                    }
+                    else
+                    {
+                        attempts--;
+                        Console.WriteLine("Incorrect! You have " + attempts + " attempts remaining.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input, please try again.");
+                }
+            }
+
+            Console.WriteLine("Game over! Your final score is " + score);
+        }
+    }
+}
