@@ -1,4 +1,4 @@
-# Very-Coll-Math-Game-that-I-made-it
+# Coll-Math-Game
 cool math game
 
 
